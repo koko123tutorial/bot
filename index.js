@@ -21,6 +21,7 @@ const prefix = config.prefix
 const fs = require('fs');
 
 client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 const commands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"))
 for(file of commands) {
   const commandName = file.split(".")[0]
@@ -37,7 +38,7 @@ client.on("messageCreate", message => {
   if(message.content.startsWith(prefix)) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const commandName = args.shift()
-    const command = client.commands.get(commandName)
+    const command = client.commands.get(commandName) || client.commands.find(a => a.aliases && a.aliases.includes(commandName));
     if(!command) return message.reply("The commands not found")
     command.run(client, message, args)
   }
