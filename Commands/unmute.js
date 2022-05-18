@@ -4,7 +4,7 @@ const { prefix } = require('../config');
     module.exports = {
     name: 'unmute',
     aliases: ['unmt'],
-    category: "Commands Admin",
+    category: "admin",
     run(client, message, args) {
         if(!message.member.permissions.has("MANAGE_ROLES")) return message.reply("You don't have Permission");
         const target = message.mentions.members.first()

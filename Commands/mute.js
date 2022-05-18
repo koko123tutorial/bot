@@ -5,7 +5,7 @@ const ms = require('ms');
     module.exports = {
     name: 'mute',
     aliases: ['mt'],
-    category: "Commands Admin",
+    category: "admin",
     run(client, message, args) {
         if(!message.member.permissions.has("MANAGE_ROLES")) return message.reply("You don't have Permission");
         const target = message.mentions.members.first()

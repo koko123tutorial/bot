@@ -4,7 +4,7 @@ const { prefix } = require('../config');
 module.exports = {
     name: 'purge',
     aliases: ['deletemessage'],
-    category: "Commands Admin",
+    category: "admin",
     run(client, message, args) {
         if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have Permission");
         if(!args[0]) return message.reply('enter the amount of messages want to delete!')

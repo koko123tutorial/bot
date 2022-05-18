@@ -4,7 +4,7 @@ const { prefix } = require('../config');
 module.exports = {
   name: 'dm',
   aliases: ['sendmessage'],
-  category: "Commands Member",
+  category: "member",
   run(client, message, args) {
   let user = message.mentions.users.first() || message.guild.members.cache.get(args[0])
     if(!user) return message.channel.send('Mention user to dm')

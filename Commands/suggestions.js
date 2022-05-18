@@ -4,7 +4,7 @@ const { prefix } = require('../config');
 module.exports = {
     name: 'suggestions',
     aliases: ['saran'],
-    category: "Commands Member",
+    category: "member",
     run(client, message, args) {
         const channel = message.guild.channels.cache.find(c => c.name === 'suggestions');
         if(!channel) return message.reply("suggestions channel does not exist!");

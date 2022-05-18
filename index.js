@@ -20,12 +20,24 @@ const config = require('./config.js')
 const prefix = config.prefix
 const fs = require('fs');
 
+client.categories = new Discord.Collection();
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const commands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"))
+const categories = {
+  fun: [],
+  info: [],
+  admin: [],
+  member: []
+}
 for(file of commands) {
   const commandName = file.split(".")[0]
-  const command = require(`./Commands/${commandName}`)
+  const command = require(`./Commands/${commandName}`);
+  
+  if(command.category){
+    categories[command.category].push(command);
+    client.categories.set(command.category, categories[command.category]);
+  }
   client.commands.set(commandName, command)
 }
 
